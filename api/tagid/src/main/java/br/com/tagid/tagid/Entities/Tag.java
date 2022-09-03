@@ -12,10 +12,13 @@ public class Tag {
     private String description;
     @Column(name = "st_tagid")
     private boolean status;
+    @Column(name = "st_athorized")
+    private boolean authorized;
 
-    public Tag(String tagId) {
+    public Tag(String tagId, boolean status) {
         this.tagId = tagId;
-        this.status = false;
+        this.status = status;
+        this.authorized = false;
     }
 
     public Tag() {
@@ -44,5 +47,12 @@ public class Tag {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+    public boolean isAuthorized() {
+        return authorized;
+    }
+
+    public void setAuthorized(boolean authorized) {
+        this.authorized = authorized;
     }
 }

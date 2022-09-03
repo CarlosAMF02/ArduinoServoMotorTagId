@@ -15,7 +15,7 @@ public class TagIdService {
 
     public void insertTagId(Tag tagId) {
         try {
-            Tag tag = new Tag(tagId.getTagId());
+            Tag tag = new Tag(tagId.getTagId(), tagId.isStatus());
             repository.save(tag);
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +62,7 @@ public class TagIdService {
     public boolean isAuthorized (String tagId) {
         try {
             Tag tag = repository.findById(tagId).orElse(null);
-            return tag != null && tag.isStatus();
+            return tag != null && tag.isAuthorized();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
